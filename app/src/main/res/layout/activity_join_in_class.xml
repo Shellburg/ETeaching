@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="30dp"
+    tools:context=".Activity.StudentActivity.JoinInClassActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加入班课"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/join_class_id"
+        android:inputType="text"
+        android:hint="输入班课码"/>
+
+    <Button
+        android:text="加入班课"
+        android:textColor="#0079FF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="Join_in_class"
+        />
+
+</LinearLayout>

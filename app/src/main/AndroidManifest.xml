@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sdp.eteaching">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activity.TeacherActivity.CheckClassInfoActivity"></activity>
+        <activity android:name=".Activity.TeacherActivity.ShowClassIdActivity" />
+        <activity android:name=".Activity.StudentActivity.JoinInClassActivity" />
+        <activity android:name=".Activity.TeacherActivity.AddClassActivity" />
+        <activity
+            android:name=".Activity.TeacherActivity.TeacherMainActivity"
+            android:label="@string/title_activity_teacher_main" />
+        <activity android:name=".Activity.TeacherActivity.TeacherAddActivity" />
+        <activity android:name=".Activity.TeacherActivity.TeacherRegisterActivity" />
+        <activity android:name=".Activity.TeacherActivity.TeacherLoginActivity" />
+        <activity android:name=".Activity.IndexActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.StudentActivity.StudentAddActivity" />
+        <activity android:name=".Activity.StudentActivity.StudentRegisterActivity" />
+        <activity
+            android:name=".Activity.StudentActivity.StudentMainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Activity.StudentActivity.StudentLoginActivity"
+            android:label="@string/app_name" />
+    </application>
+
+</manifest>

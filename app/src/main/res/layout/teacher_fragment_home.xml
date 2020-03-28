@@ -18,5 +18,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
+
+    <com.sdp.eteaching.util.AudioRecorderButton
+        android:id="@+id/id_recorder_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_recorder_normal"
+        android:gravity="center"
+        android:minHeight="0dp"
+        android:padding="5dp"
+        android:text="@string/str_recorder_normal"
+        android:textColor="#727272"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="65dp">
+
+    </com.sdp.eteaching.util.AudioRecorderButton>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

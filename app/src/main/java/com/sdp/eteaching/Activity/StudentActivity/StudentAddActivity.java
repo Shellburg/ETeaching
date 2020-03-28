@@ -107,7 +107,7 @@ public class StudentAddActivity extends AppCompatActivity {
         Intent in=new Intent(StudentAddActivity.this, StudentMainActivity.class);
         Bundle bundle = new Bundle();
 
-        bundle.putInt("s_id",student.getStudent_id());
+        bundle.putInt("s_id",student.getStu_id());
 
         in.putExtras(bundle);
 

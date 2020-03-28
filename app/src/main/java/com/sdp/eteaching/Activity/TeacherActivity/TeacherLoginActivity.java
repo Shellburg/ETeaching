@@ -93,9 +93,9 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putInt("t_id",teacher.getTeacher_id());
+        bundle.putLong("t_id",teacher.getAd_id());
 
-        Log.d("teacherid", String.valueOf(teacher.getTeacher_id()));
+        Log.d("teacherid", String.valueOf(teacher.getAd_id()));
 
         in.putExtras(bundle);
 

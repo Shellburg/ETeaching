@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sdp.eteaching.R;
 import com.sdp.eteaching.util.AudioRecorderButton;
 import com.sdp.eteaching.util.MediaManager;
+import com.sdp.eteaching.util.RecorderAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

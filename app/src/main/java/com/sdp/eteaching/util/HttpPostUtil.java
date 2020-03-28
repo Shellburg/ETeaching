@@ -21,7 +21,7 @@ public class HttpPostUtil {
 
             System.out.println("要发送的信息"+content);
 
-            String address = "http://192.168.2.218:10080/"+path+content;
+            String address = "http://192.168.2.218:8089/OnlineLearning/"+path+content;
 
             URL url = new URL(address);
 

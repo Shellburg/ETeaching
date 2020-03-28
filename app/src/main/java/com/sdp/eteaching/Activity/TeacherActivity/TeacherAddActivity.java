@@ -109,7 +109,7 @@ public class TeacherAddActivity extends AppCompatActivity {
         Intent in=new Intent(TeacherAddActivity.this, TeacherMainActivity.class);
         Bundle bundle = new Bundle();
 
-        bundle.putInt("t_id",teacher.getTeacher_id());
+        bundle.putLong("t_id",teacher.getAd_id());
 
         in.putExtras(bundle);
 

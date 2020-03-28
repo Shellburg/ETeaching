@@ -1,39 +1,83 @@
 package com.sdp.eteaching.pojo;
 
-import java.io.Serializable;
+public class Student {
+    /*学生表s
+     * @author
+     * @date 2017年11月28日19:44:25
+     * */
+    //属性值
+    private int stu_id;
+    private String stu_num;//学号
+    private String stu_name;//姓名
+    private String psw;//登录密码
+    private String phone;//电话
+    private String eamil;//电子邮件
+    private String gender;//性别
+    private String department;//系别
+    private String classT;//班级
 
-public class Student implements Serializable {
-    private Integer student_id;
-    private String student_name;
-    private String gender;
-    private String student_password;
-    private String s_photo;
-    private String s_phonenum;
-    private String school_name;
-    private Integer class_id;
-
-    public Integer getClass_id() {
-        return class_id;
+    /**
+     * 构造函数
+     */
+    public Student() {
     }
 
-    public void setClass_id(Integer class_id) {
-        this.class_id = class_id;
+    public Student(String stu_num) {
+        super();
+        this.stu_num = stu_num;
     }
 
-    public Integer getStudent_id() {
-        return student_id;
+
+    /**
+     * get set
+     */
+
+    public int getStu_id() {
+        return stu_id;
     }
 
-    public void setStudent_id(Integer student_id) {
-        this.student_id = student_id;
+    public void setStu_id(int stu_id) {
+        this.stu_id = stu_id;
     }
 
-    public String getStudent_name() {
-        return student_name;
+    public String getStu_num() {
+        return stu_num;
     }
 
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
+    public void setStu_num(String stu_num) {
+        this.stu_num = stu_num;
+    }
+
+    public String getStu_name() {
+        return stu_name;
+    }
+
+    public void setStu_name(String stu_name) {
+        this.stu_name = stu_name;
+    }
+
+    public String getPsw() {
+        return psw;
+    }
+
+    public void setPsw(String psw) {
+        this.psw = psw;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEamil() {
+        return eamil;
+    }
+
+    public void setEamil(String eamil) {
+        this.eamil = eamil;
     }
 
     public String getGender() {
@@ -44,64 +88,19 @@ public class Student implements Serializable {
         this.gender = gender;
     }
 
-    public String getStudent_password() {
-        return student_password;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setStudent_password(String student_password) {
-        this.student_password = student_password;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getS_photo() {
-        return s_photo;
+    public String getClassT() {
+        return classT;
     }
 
-    public void setS_photo(String s_photo) {
-        this.s_photo = s_photo;
-    }
-
-    public String getS_phonenum() {
-        return s_phonenum;
-    }
-
-    public void setS_phonenum(String s_phonenum) {
-        this.s_phonenum = s_phonenum;
-    }
-
-    public String getSchool_name() {
-        return school_name;
-    }
-
-    public void setSchool_name(String school_name) {
-        this.school_name = school_name;
-    }
-
-    public Student() {
-        super();
-    }
-
-    public Student(Integer student_id, String student_name, String gender, String student_password, String s_photo, String s_phonenum, String school_name, Integer class_id) {
-        this.student_id = student_id;
-        this.student_name = student_name;
-        this.gender = gender;
-        this.student_password = student_password;
-        this.s_photo = s_photo;
-        this.s_phonenum = s_phonenum;
-        this.school_name = school_name;
-        this.class_id = class_id;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "student_id=" + student_id +
-                ", student_name='" + student_name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", student_password='" + student_password + '\'' +
-                ", s_photo='" + s_photo + '\'' +
-                ", s_phonenum='" + s_phonenum + '\'' +
-                ", school_name='" + school_name + '\'' +
-                ", class_id=" + class_id +
-                '}';
+    public void setClassT(String classT) {
+        this.classT = classT;
     }
 }

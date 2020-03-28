@@ -3,6 +3,7 @@ package com.sdp.eteaching.Activity.StudentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ public class StudentLoginActivity extends AppCompatActivity {
     private EditText et_main_phonenum;
     private EditText et_main_upass;
     private Student student;
+    private Button btnLogin;
 
 
     @Override
@@ -25,49 +27,57 @@ public class StudentLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_login);
         et_main_phonenum=(EditText)findViewById(R.id.phonenum);
         et_main_upass=(EditText)findViewById(R.id.pwd);
-    }
+        btnLogin=findViewById(R.id.btn_login);
 
-
-    public void studentLogin(View view){
-        String uname=et_main_phonenum.getText().toString();
-        String upass=et_main_upass.getText().toString();
-        System.out.println(uname+upass);
-
-//判断
-
-        if (checkStr(uname)&&checkStr(upass)){
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String uname=et_main_phonenum.getText().toString();
+                String upass=et_main_upass.getText().toString();
+                System.out.println(uname+upass);
+                if (checkStr(uname)&&checkStr(upass)){
 
 //上传的参数部分
 
-            String param = "?s_phonenum="+uname+"&student_password="+upass;
+                    String param = "?stu_num="+uname+"&psw="+upass;
 
-            String path = "student/login.do";
+                    String path = "student/login.do";
 
-            ResultData<Student> resultData =
+                    ResultData<Student> resultData =
 
-                    JsonUtil.getResult(path,param,Student.class);
+                            JsonUtil.getResult(path,param,Student.class);
 
-            student=resultData.getData();
+                    student=resultData.getData();
 
-            if (resultData!=null){
+                    if (resultData!=null){
 
-                Toast.makeText(StudentLoginActivity.this,resultData.getMsg(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StudentLoginActivity.this,resultData.getMsg(),Toast.LENGTH_SHORT).show();
 
-                if (resultData.getStatus()==1){
+                        if (resultData.getStatus()==1){
 
-                    jumpTo();
+                            jumpTo();
+
+                        }
+
+                    }
+
+                }else {
+
+                    Toast.makeText(StudentLoginActivity.this,"输入有误",Toast.LENGTH_SHORT).show();
 
                 }
 
             }
 
-        }else {
-
-            Toast.makeText(StudentLoginActivity.this,"输入有误",Toast.LENGTH_SHORT).show();
-
-        }
-
+        });
     }
+
+
+
+
+
+//判断
+
+
 
     public void register(View v){
 
@@ -95,7 +105,7 @@ public class StudentLoginActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putInt("s_id",student.getStudent_id());
+        bundle.putInt("s_id",student.getStu_id());
 
         in.putExtras(bundle);
 

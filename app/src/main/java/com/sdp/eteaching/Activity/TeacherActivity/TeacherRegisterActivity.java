@@ -168,7 +168,7 @@ public class TeacherRegisterActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
 
-        bundle.putInt("t_id",teacher.getTeacher_id());
+        bundle.putLong("t_id",teacher.getAd_id());
 
         in.putExtras(bundle);
 

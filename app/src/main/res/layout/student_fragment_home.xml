@@ -27,30 +27,16 @@
         android:background="#ebebeb"
         android:divider="@null"
         android:dividerHeight="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"></ListView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/id_listview"
-        app:layout_constraintTop_toTopOf="@+id/text_home">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </LinearLayout>
+        </LinearLayout>
+    </ListView>
 
-<!--    <com.sdp.eteaching.util.AudioRecorderButton-->
-<!--        android:id="@+id/id_recorder_button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/btn_recorder_normal"-->
-<!--        android:gravity="center"-->
-<!--        android:minHeight="0dp"-->
-<!--        android:padding="5dp"-->
-<!--        android:text="@string/str_recorder_normal"-->
-<!--        android:textColor="#727272"-->
-<!--        tools:layout_editor_absoluteX="65dp"-->
-<!--        tools:layout_editor_absoluteY="683dp">-->
-
-<!--    </com.sdp.eteaching.util.AudioRecorderButton>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

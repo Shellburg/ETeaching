@@ -10,12 +10,18 @@ import com.sdp.eteaching.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.sdp.eteaching.util.AudioManager.verifyAudioPermissions;
+
 public class IndexActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+
+        verifyAudioPermissions(IndexActivity.this);
+        //MediaRecorder mRecorders = new MediaRecorder();
+        //mRecorders.setAudioSource(MediaRecorder.AudioSource.MIC);
     }
 
     public void studentInter(View v){

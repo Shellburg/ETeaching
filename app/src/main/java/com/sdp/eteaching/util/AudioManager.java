@@ -1,10 +1,15 @@
 package com.sdp.eteaching.util;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+
+import androidx.core.app.ActivityCompat;
 
 public class AudioManager {
 
@@ -13,6 +18,23 @@ public class AudioManager {
     private MediaRecorder mMediaRecorder;
     private String mDir;
     private String mCurrentFilePath;
+
+    //申请录音权限
+    private static final int GET_RECODE_AUDIO = 1;
+    private static String[] PERMISSION_AUDIO = {
+            Manifest.permission.RECORD_AUDIO
+    };
+
+    /*
+     * 申请录音权限*/
+    public static void verifyAudioPermissions(Activity activity) {
+        int permission = ActivityCompat.checkSelfPermission(activity,
+                Manifest.permission.RECORD_AUDIO);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSION_AUDIO,
+                    GET_RECODE_AUDIO);
+        }
+    }
 
     private static AudioManager mInstance;
 
@@ -105,10 +127,34 @@ public class AudioManager {
     }
 
     public void release() {
-        mMediaRecorder.stop();
-        mMediaRecorder.release();
-        mMediaRecorder = null;
+//        if (recorder != null) {
+//            recorder.stop();
+//            recorder.release();
+//            recorder = null;
+//        }
+//    }
+
+        if (mMediaRecorder != null) {
+            try {
+                mMediaRecorder.stop();
+            } catch (IllegalStateException e) {
+                // TODO 如果当前java状态和jni里面的状态不一致，
+                //e.printStackTrace();
+                mMediaRecorder = null;
+                mMediaRecorder = new MediaRecorder();
+            }
+            mMediaRecorder.release();
+            mMediaRecorder = null;
+        }
     }
+//
+//    public void release() {
+//        //3.30修改
+//        //stop();
+//        mMediaRecorder.stop();
+//        mMediaRecorder.release();
+//        mMediaRecorder = null;
+//    }
 
     public void cancel(){
         release();

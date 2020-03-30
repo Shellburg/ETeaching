@@ -41,6 +41,6 @@ dependencies {
 // https://mvnrepository.com/artifact/org.xutils/xutils
     implementation group: 'org.xutils', name: 'xutils', version: '3.5.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
-
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
 
 }

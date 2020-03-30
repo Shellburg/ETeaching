@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.sdp.eteaching.Activity.TeacherActivity.TeacherMainActivity;
+import com.sdp.eteaching.Activity.TeacherActivity.AudioActivity;
 import com.sdp.eteaching.R;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
  * Created by Administrator on 2017/11/28.
  */
 
-public class RecorderAdaper extends ArrayAdapter<TeacherMainActivity.Recorder> {
+public class RecorderAdaper extends ArrayAdapter<AudioActivity.Recorder> {
 
     //item 最小最大值
     private int mMinItemWidth;
@@ -30,7 +30,7 @@ public class RecorderAdaper extends ArrayAdapter<TeacherMainActivity.Recorder> {
 
     private LayoutInflater mInflater;
 
-    public RecorderAdaper(@NonNull Context context, List<TeacherMainActivity.Recorder> datas) {
+    public RecorderAdaper(@NonNull Context context, List<AudioActivity.Recorder> datas) {
         super(context,-1, datas);
         mInflater = LayoutInflater.from(context);
 

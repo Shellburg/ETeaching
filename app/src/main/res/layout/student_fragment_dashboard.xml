@@ -23,21 +23,21 @@
         android:id="@+id/button"
         android:layout_width="388dp"
         android:layout_height="51dp"
-        android:layout_marginTop="633dp"
         android:layout_marginBottom="47dp"
         android:background="#E4EBEFF4"
         android:onClick="updateMessage"
         android:text="修改信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintVertical_bias="0.271" />
 
     <Button
+        android:id="@+id/button6"
         android:layout_width="388dp"
         android:layout_height="51dp"
-        android:layout_marginTop="233dp"
         android:layout_marginBottom="345dp"
         android:background="#E4EBEFF4"
         android:onClick="joinInClass"
@@ -46,6 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/student_text_dashboard"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

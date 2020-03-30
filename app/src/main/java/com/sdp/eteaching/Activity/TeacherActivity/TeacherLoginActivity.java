@@ -45,7 +45,14 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
                     JsonUtil.getResult(path,param,Teacher.class);
 
-            teacher=resultData.getData();
+
+            if(resultData==null){
+                Toast.makeText(TeacherLoginActivity.this,"服务器未返回数据",Toast.LENGTH_SHORT).show();
+            }
+
+            else{
+                teacher=resultData.getData();
+            }
 
             if (resultData!=null){
 

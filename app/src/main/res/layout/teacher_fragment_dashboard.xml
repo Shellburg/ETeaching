@@ -9,45 +9,44 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="388dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="633dp"
-        android:layout_marginBottom="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:background="#E4EBEFF4"
         android:onClick="updateTeacherMessage"
         android:text="修改信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:layout_width="388dp"
-        android:layout_height="51dp"
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="47dp"
         android:background="#E4EBEFF4"
         android:onClick="checkClassInfo"
         android:text="查看课程信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.369" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="388dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="233dp"
-        android:layout_marginBottom="345dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#E4EBEFF4"
         android:onClick="addClass"
         android:text="新建课程"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

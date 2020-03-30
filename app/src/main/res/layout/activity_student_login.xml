@@ -52,7 +52,8 @@
                     android:paddingRight="15dp"
                     android:singleLine="true"
                     android:textColorHint="#999999"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:inputType="numberDecimal">
                     <requestFocus />
                 </EditText>
 
@@ -83,7 +84,8 @@
                 android:paddingRight="0dp"
                 android:singleLine="true"
                 android:textColorHint="#999999"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:autofillHints="" />
         </LinearLayout>
 
         <Button

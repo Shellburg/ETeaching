@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/teacher_navigation_home"
-        android:name="com.sdp.eteaching.ui.home.HomeFragment"
+        android:name="com.sdp.eteaching.ui.home.TeacherHomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/teacher_fragment_home" />
 
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/teacher_navigation_notifications"
-        android:name="com.sdp.eteaching.ui.notifications.NotificationsFragment"
+        android:name="com.sdp.eteaching.ui.notifications.TeacherNotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/teacher_fragment_notifications" />
 </navigation>

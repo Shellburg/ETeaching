@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:layout_marginTop="5dp"
-    tools:context="com.sdp.eteaching.Activity.TeacherActivity.TeacherMainActivity">
+    tools:context="com.sdp.eteaching.Activity.TeacherActivity.AudioActivity">
     <ImageView
         android:id="@+id/id_icon"
         android:layout_width="40dp"
@@ -28,11 +28,10 @@
 
         <View
             android:id="@+id/id_recorder_anim"
-            android:layout_width="25dp"
+            android:layout_width="29dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical|right"
-            android:background="@drawable/adj"
-            />
+            android:background="@drawable/adj" />
 
     </LinearLayout>
 

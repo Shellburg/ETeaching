@@ -36,7 +36,7 @@ public class DialogManager {
         mDialog.show();
     }
 
-    //正在播放时的状态
+    //正在录制时的状态
     public void recording() {
         if (mDialog != null&&mDialog.isShowing()) {
             mIcon.setVisibility(View.VISIBLE);

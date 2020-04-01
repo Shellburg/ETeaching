@@ -68,7 +68,7 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
     public interface AudioFinishRecorderListener{
         void onFinish(int seconds, String FilePath);
 
-        //时长  和 文件
+        //时长 和 文件
         void onFinish(float seconds, String filePath);
     }
 
@@ -102,7 +102,7 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_AUDIO_PREPARED :
-                    //TODO 真正现实应该在audio end prepared以后
+                    //TODO 真正实现应该在audio end prepared以后
                     mDialogManager.showRecordingDialog();
                     isRecording = true;
 

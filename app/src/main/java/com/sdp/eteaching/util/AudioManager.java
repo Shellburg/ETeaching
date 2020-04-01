@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
+import android.net.Uri;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,13 @@ public class AudioManager {
     private MediaRecorder mMediaRecorder;
     private String mDir;
     private String mCurrentFilePath;
+    private String mFileName;
+
+
+    public String getmFileName() {
+        return mFileName;
+    }
+
 
     //申请录音权限
     private static final int GET_RECODE_AUDIO = 1;
@@ -80,13 +88,20 @@ public class AudioManager {
             if (!dir.exists()) {
                 dir.mkdir();
             }
+            //用UUID生成文件名
             String fileName = generateFileName();
 
+            //在音频文件目录下新建文件
             File file = new File(dir, fileName);
 
+            mFileName=fileName;
+
+            //获得绝对路径名
             mCurrentFilePath = file.getAbsolutePath();
 
+
             mMediaRecorder = new MediaRecorder();
+
             //设置输出文件
             mMediaRecorder.setOutputFile(file.getAbsolutePath());
             //设置MediaRecorder的音频源为麦克风
@@ -108,7 +123,7 @@ public class AudioManager {
     }
 
     //    生成UUID唯一标示符
-//    算法的核心思想是结合机器的网卡、当地时间、一个随即数来生成GUID
+//    算法的核心思想是结合机器的网卡、当地时间、一个随机数来生成GUID
 //    .amr音频文件
     private String generateFileName() {
         return UUID.randomUUID().toString()+".amr";
@@ -166,5 +181,11 @@ public class AudioManager {
     }
     public String getCurrentFilePath() {
         return mCurrentFilePath;
+    }
+
+    public Uri getUriFromFilepath() {
+                Uri mUri = Uri.parse(mCurrentFilePath);
+                return mUri;
+
     }
 }

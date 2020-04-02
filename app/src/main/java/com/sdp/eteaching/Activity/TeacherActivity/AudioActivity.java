@@ -203,6 +203,7 @@ public class AudioActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
         MediaType contentType = MediaType.parse("audio/amr"); // 上传文件的Content-Type
         RequestBody body = RequestBody.create(contentType, file); // 上传文件的请求体
+        Log.d("Request",body.toString());
         Request request = new Request.Builder()
                 .url("https://192.168.2.218:10080/uploadAudio/fileUpload") // 上传地址
                 .post(body)

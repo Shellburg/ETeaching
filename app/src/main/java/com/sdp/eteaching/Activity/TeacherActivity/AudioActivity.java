@@ -1,5 +1,6 @@
 package com.sdp.eteaching.Activity.TeacherActivity;
 
+import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -14,22 +15,19 @@ import android.widget.ListView;
 import com.sdp.eteaching.R;
 import com.sdp.eteaching.util.AudioRecorderButton;
 import com.sdp.eteaching.util.MediaManager;
+import com.sdp.eteaching.util.NetRequest;
 import com.sdp.eteaching.util.PermissionUtils;
 import com.sdp.eteaching.util.RecorderAdaper;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 import static com.sdp.eteaching.util.AudioManager.verifyAudioPermissions;
 
@@ -42,6 +40,9 @@ public class AudioActivity extends AppCompatActivity {
 
     private AudioRecorderButton mAudioRecorderButton;
     private View mAnimView;
+
+    private NetRequest netRequest;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,33 +200,52 @@ public class AudioActivity extends AppCompatActivity {
 
 
     // 使用OkHttp上传文件
-    public void uploadFile(File file) {
-        OkHttpClient client = new OkHttpClient();
-        MediaType contentType = MediaType.parse("audio/amr"); // 上传文件的Content-Type
-        RequestBody body = RequestBody.create(contentType, file); // 上传文件的请求体
-        Log.d("Request",body.toString());
-        Request request = new Request.Builder()
-                .url("https://192.168.2.218:10080/uploadAudio/fileUpload") // 上传地址
-                .post(body)
-                .build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
+//    public void uploadFile(File file) {
+//        OkHttpClient client = new OkHttpClient();
+//        MediaType contentType = MediaType.parse("audio/amr"); // 上传文件的Content-Type
+//        RequestBody body = RequestBody.create(contentType, file); // 上传文件的请求体
+//        Log.d("Request",body.toString());
+//        Request request = new Request.Builder()
+//                .url("https://192.168.2.218:10080/uploadAudio/fileUpload") // 上传地址
+//                .post(body)
+//                .build();
+//        Call call = client.newCall(request);
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                // 文件上传成功
+//                if (response.isSuccessful()) {
+//                    Log.i("uploadsuccess", "onResponse: " + response.body().string());
+//                } else {
+//                    Log.i("uploadfile", "onResponse: " + response.message());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                // 文件上传失败
+//                Log.i("uploadfailed", "onFailure: " + e.getMessage());
+//            }
+//        });
+//    }
+
+    public void uploadFile(File file){
+        String url="https://192.168.2.218:10080/uploadAudio/fileUpload/";
+        List<File> list= new ArrayList<>();
+        Map<String,String> params=new HashMap<>();
+            list.add(file);
+        NetRequest.DataCallBack callback=new NetRequest.DataCallBack() {
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                // 文件上传成功
-                if (response.isSuccessful()) {
-                    Log.i("uploadsuccess", "onResponse: " + response.body().string());
-                } else {
-                    Log.i("uploadfile", "onResponse: " + response.message());
-                }
+            public void requestSuccess(String result) throws Exception {
+
             }
 
             @Override
-            public void onFailure(Call call, IOException e) {
-                // 文件上传失败
-                Log.i("uploadfailed", "onFailure: " + e.getMessage());
+            public void requestFailure(Request request, IOException e) {
+
             }
-        });
+        };
+        list.add(file);
+        netRequest.audioFileRequest(context,url,params,"audio",list,callback);
     }
-
 }

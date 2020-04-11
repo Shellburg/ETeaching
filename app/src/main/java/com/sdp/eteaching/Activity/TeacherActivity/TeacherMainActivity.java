@@ -70,6 +70,15 @@ public class TeacherMainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    public void checkStudentsInfo(View v){
+//        Intent intent = new Intent(this, CheckAllStudentsActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("t_id", teacherId);
+//
+//        intent.putExtras(bundle);
+//        startActivity(intent);
+//    }
+
     public void start_audio(View v){
         Intent intent=new Intent(this,AudioActivity.class);
         startActivity(intent);

@@ -1,5 +1,6 @@
 package com.sdp.eteaching.util;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 
 import java.io.IOException;
@@ -13,6 +14,8 @@ public class MediaManager {
     private static MediaPlayer mMediaPlayer;
 
     private static boolean isPause;
+
+    private static int currVolume = 0;
 
     //播放录音
     public static void playSound(String filePath, MediaPlayer.OnCompletionListener onCompletionListener){
@@ -72,4 +75,34 @@ public class MediaManager {
             mMediaPlayer = null;
         }
     }
+
+//    private void static setSpeakerPhoneOn(boolean on) {
+//
+//        if (on) {
+//            audioManager.setSpeakerphoneOn(true);
+//            audioManager.setMode(android.media.AudioManager.MODE_NORMAL);
+//            //设置音量，解决有些机型切换后没声音或者声音突然变大的问题
+//            audioManager.setStreamVolume(android.media.AudioManager.STREAM_MUSIC,
+//                    audioManager.getStreamVolume(android.media.AudioManager.STREAM_MUSIC), android.media.AudioManager.FX_KEY_CLICK);
+//
+//        } else {
+//            audioManager.setSpeakerphoneOn(false);
+//
+//            //5.0以上
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+//                audioManager.setMode(android.media.AudioManager.MODE_IN_COMMUNICATION);
+//                //设置音量，解决有些机型切换后没声音或者声音突然变大的问题
+//                audioManager.setStreamVolume(android.media.AudioManager.STREAM_VOICE_CALL,
+//                        audioManager.getStreamMaxVolume(android.media.AudioManager.STREAM_VOICE_CALL), android.media.AudioManager.FX_KEY_CLICK);
+//
+//            } else {
+//                audioManager.setMode(android.media.AudioManager.MODE_IN_CALL);
+//                audioManager.setStreamVolume(android.media.AudioManager.STREAM_VOICE_CALL,
+//                        audioManager.getStreamMaxVolume(android.media.AudioManager.STREAM_VOICE_CALL), android.media.AudioManager.FX_KEY_CLICK);
+//            }
+//        }
+//
+//    }
+
+
 }

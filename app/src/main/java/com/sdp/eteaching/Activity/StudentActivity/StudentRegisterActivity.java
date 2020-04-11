@@ -11,6 +11,9 @@ import com.sdp.eteaching.pojo.Student;
 import com.sdp.eteaching.util.JsonUtil;
 import com.sdp.eteaching.util.ResultData;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,7 +47,12 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
         phone_num = s_phone.getText().toString();
 
-        if(phone_num!=null&&phone_num.trim().length()==11){
+        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(phone_num);
+
+        if(phone_num!=null&&phone_num.trim().length()==11&&m.matches()){
 
             Toast.makeText(StudentRegisterActivity.this,"手机号格式正确",Toast.LENGTH_SHORT).show();
 

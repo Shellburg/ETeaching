@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 
 /**
  *list的adapter
- * Created by Administrator on 2017/11/28.
  */
 
 public class RecorderAdaper extends ArrayAdapter<AudioActivity.Recorder> {

@@ -45,6 +45,7 @@ public class CheckAllStudentsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle=new Bundle();
+                bundle.putInt("teacherID",teacherID);
                 bundle.putInt("studentID",studentArrayList.get(position).getStudent_id());
                 Intent intentToStudentInfo=new Intent(CheckAllStudentsActivity.this,StudentInfoActivity.class);
                 intentToStudentInfo.putExtras(bundle);

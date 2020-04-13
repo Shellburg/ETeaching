@@ -27,7 +27,7 @@ import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener,View.OnClickListener {
+public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,View.OnClickListener {
     private int teacherID;
     private ArrayList<Class> classArrayList;
     private Set<Integer> classIDSet=new HashSet<>();
@@ -39,7 +39,7 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
     private ListView listView;
     private ListViewWithCheckBoxAdapter adapter;
     private List<ItemBean> list;
-    private boolean isLineaLayoutVisible = false;//标记按钮布局的显示
+    private boolean isLineaLayoutVisible = true;//标记按钮布局的显示
 
 
     @Override
@@ -54,6 +54,7 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         //initView();
         //setListViewAdapter();
 
+        listView = (ListView)findViewById(R.id.class_info_list_for_homework);
 
         linearLayout = (LinearLayout) findViewById(R.id.assign_homework_linearLayout);
         sure = (Button) findViewById(R.id.sure);
@@ -65,10 +66,10 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         for(int i=0;i<classArrayList.size();i++) {
             Map<String,String> map=new HashMap<>();
             map.put("班级名称:","班级名称:"+classArrayList.get(i).getClass_name());
-            map.put("班课码:", "班课码:"+String.valueOf(classArrayList.get(i).getClass_id()));
+            map.put("班课码:", "班课码:"+classArrayList.get(i).getClass_id());
             map.put("学校名称:","学校名称:"+classArrayList.get(i).getSchool_name());
             Log.i("mapinfo",map.get("班级名称:"));
-            list.add(new ItemBean(classArrayList.get(i).getClass_id(),classArrayList.get(i).getClass_name(),"学校名称:"+classArrayList.get(i).getSchool_name(),false,false));
+            list.add(new ItemBean("班课码："+classArrayList.get(i).getClass_id(),"班级名称"+classArrayList.get(i).getClass_name(),"学校名称:"+classArrayList.get(i).getSchool_name(),false,true));
         }
         adapter = new ListViewWithCheckBoxAdapter(this,list);
 
@@ -89,13 +90,13 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-        listView.setOnItemLongClickListener(this);
+        //listView.setOnItemLongClickListener(this);
     }
 
-    private void initView() {
-        mListView = (ListView)findViewById(R.id.class_info_list_for_homework);
-
-    }
+//    private void initView() {
+//        mListView = (ListView)findViewById(R.id.class_info_list_for_homework);
+//
+//    }
 
 //    private void setListViewAdapter() {
 //        mAdapter = new SimpleAdapter(this,putData(),R.layout.class_info_item_for_homework,
@@ -163,27 +164,27 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ListViewWithCheckBoxAdapter.ViewHolder viewHolder = (ListViewWithCheckBoxAdapter.ViewHolder) view.getTag();
         if(isLineaLayoutVisible){//当按钮布局显示时候才有权多项选择
-            list.get(position).setIsSelect(!list.get(position).isSelect());//向表中记录被选择的item
+            list.get(position).setIsSelect(list.get(position).isSelect());//向表中记录被选择的item
             adapter.notifyDataSetChanged();//更新ListView
         }
         else{
-            //Toast.makeText(this,list.get(position).getGrade()+"级"+list.get(position).getName(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,list.get(position).getClass_name_homework()+"班",Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-        list.get(position).setIsSelect(true);//记录选择的item
-        for(ItemBean itemBean : list){
-            itemBean.setIsShowCheckBox(true);//将所有的Item的CheckBox设置为选择状态
-        }
-        adapter.notifyDataSetChanged();
-        linearLayout.setVisibility(View.VISIBLE);//长按item设置按钮布局为显示状态
-        isLineaLayoutVisible = true;
-        return true;
-    }
+//    @Override
+//    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//        list.get(position).setIsSelect(true);//记录选择的item
+//        for(ItemBean itemBean : list){
+//            itemBean.setIsShowCheckBox(true);//将所有的Item的CheckBox设置为选择状态
+//        }
+//        adapter.notifyDataSetChanged();
+//        linearLayout.setVisibility(View.VISIBLE);//长按item设置按钮布局为显示状态
+//        isLineaLayoutVisible = true;
+//        return true;
+//    }
 
     @Override
     public void onClick(View v) {
@@ -193,6 +194,7 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
                 for(ItemBean itemBean : list){
                     if(itemBean.isSelect()){
                         str+=itemBean.getClass_name_homework()+"班"+"\n";
+                        classIDSet.add(Integer.valueOf(itemBean.getClass_id_homework().substring(4)));
                     }
                 }
                 if(str.equals("")){
@@ -200,6 +202,15 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
 
                 }else{
                     Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
+
+                    ArrayList<Integer> classIdList=new ArrayList<>();
+                    Bundle bundle=new Bundle();
+                    for(Integer integer : classIDSet){
+                        classIdList.add(integer);
+                    }
+                    bundle.putIntegerArrayList("ClassesID",classIdList);
+
+
                 }
                 break;
             case R.id.cancel:
@@ -223,19 +234,19 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (isLineaLayoutVisible){
-            linearLayout.setVisibility(View.INVISIBLE);
-            isLineaLayoutVisible = false;
-            for(ItemBean itemBean : list){//按返回键时取消所有选择记录，同是吧按钮布局设置为不可见
-                itemBean.setIsShowCheckBox(false);
-                itemBean.setIsSelect(false);
-            }
-            adapter.notifyDataSetChanged();
-        }else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (isLineaLayoutVisible){
+//            linearLayout.setVisibility(View.INVISIBLE);
+//            isLineaLayoutVisible = false;
+//            for(ItemBean itemBean : list){//按返回键时取消所有选择记录，同是吧按钮布局设置为不可见
+//                itemBean.setIsShowCheckBox(false);
+//                itemBean.setIsSelect(false);
+//            }
+//            adapter.notifyDataSetChanged();
+//        }else {
+//            super.onBackPressed();
+//        }
+//    }
 
 }

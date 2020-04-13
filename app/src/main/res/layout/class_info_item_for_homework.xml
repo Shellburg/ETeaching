@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <TextView
+        android:id="@+id/class_name_homework"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="班级名称:"
+        />
+    <TextView
+        android:id="@+id/class_id_homework"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="班课码:"
+        android:layout_below="@id/class_name_homework"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/school_name_homework"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="学校名称:"
+        android:layout_below="@id/class_id_homework"
+        >
+    </TextView>
+
+    <CheckBox
+        android:id="@+id/class_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/class_name_homework"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="116dp" />
+</RelativeLayout>

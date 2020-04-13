@@ -32,4 +32,5 @@
             android:layout_below="@id/tv2"
             >
         </TextView>
-    </RelativeLayout>
+
+</RelativeLayout>

@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.TeacherActivity.StudentInfoActivity"></activity>
+        <activity android:name=".Activity.TeacherActivity.AssignHomeworkActivity" />
+        <activity android:name=".Activity.TeacherActivity.StudentInfoActivity" />
         <activity android:name=".Activity.TeacherActivity.CheckAllStudentsActivity" />
         <activity android:name=".Activity.TeacherActivity.AudioActivity" />
         <activity android:name=".Activity.TeacherActivity.CheckClassInfoActivity" />

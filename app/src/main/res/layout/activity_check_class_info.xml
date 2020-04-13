@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Activity.TeacherActivity.CheckClassInfoActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="班级列表"
+        app:layout_constraintBottom_toTopOf="@+id/class_info_list"
+        tools:layout_editor_absoluteX="-16dp" />
     <ListView
         android:id="@+id/class_info_list"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="500dp"
 
         android:background="#ffffff"
         android:divider="@null"

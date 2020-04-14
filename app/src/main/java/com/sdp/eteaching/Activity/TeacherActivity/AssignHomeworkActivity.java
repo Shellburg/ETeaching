@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,7 +28,7 @@ import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,View.OnClickListener {
+public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private int teacherID;
     private ArrayList<Class> classArrayList;
     private Set<Integer> classIDSet=new HashSet<>();
@@ -55,6 +56,7 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         //setListViewAdapter();
 
         listView = (ListView)findViewById(R.id.class_info_list_for_homework);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         linearLayout = (LinearLayout) findViewById(R.id.assign_homework_linearLayout);
         sure = (Button) findViewById(R.id.sure);
@@ -140,36 +142,38 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         return classArrayList;
     }
 
-    public void jumpToMain(View v) {
-        jumpTo();
-    }
-
-    public void jumpTo() {
-
-        Intent in = new Intent(this, TeacherMainActivity.class);
-
-        Bundle bundle = new Bundle();
-
-        bundle.putInt("t_id", teacherID);
-
-        in.putExtras(bundle);
-
-        startActivity(in);
-
-    }
+//    public void jumpToMain(View v) {
+//        jumpTo();
+//    }
+//
+//    public void jumpTo() {
+//
+//        Intent in = new Intent(this, TeacherMainActivity.class);
+//
+//        Bundle bundle = new Bundle();
+//
+//        bundle.putInt("t_id", teacherID);
+//
+//        in.putExtras(bundle);
+//
+//        startActivity(in);
+//
+//    }
 
 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ListViewWithCheckBoxAdapter.ViewHolder viewHolder = (ListViewWithCheckBoxAdapter.ViewHolder) view.getTag();
-        if(isLineaLayoutVisible){//当按钮布局显示时候才有权多项选择
+
+
+        //if(isLineaLayoutVisible){//当按钮布局显示时候才有权多项选择
             list.get(position).setIsSelect(list.get(position).isSelect());//向表中记录被选择的item
             adapter.notifyDataSetChanged();//更新ListView
-        }
-        else{
-            Toast.makeText(this,list.get(position).getClass_name_homework()+"班",Toast.LENGTH_SHORT).show();
-        }
+        //}
+//        else{
+//            Toast.makeText(this,list.get(position).getClass_name_homework()+"班",Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
@@ -231,6 +235,11 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
                 break;
 
         }
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
     }
 

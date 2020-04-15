@@ -12,8 +12,10 @@ public class Homework implements Serializable {
     private String deadline;
     private String homework_path;
     private String comment_path;
+    private String homework_description;
 
-    public Homework(Integer homework_id, Integer teacher_id, Integer student_id, Integer class_id, String start_time, String end_time, String deadline, String homework_path, String comment_path) {
+
+    public Homework(Integer homework_id, Integer teacher_id, Integer student_id, Integer class_id, String start_time, String end_time, String deadline, String homework_path, String comment_path, String homework_description) {
         this.homework_id = homework_id;
         this.teacher_id = teacher_id;
         this.student_id = student_id;
@@ -23,10 +25,19 @@ public class Homework implements Serializable {
         this.deadline = deadline;
         this.homework_path = homework_path;
         this.comment_path = comment_path;
+        this.homework_description = homework_description;
     }
 
     public Homework() {
         super();
+    }
+
+    public String getHomework_description() {
+        return homework_description;
+    }
+
+    public void setHomework_description(String homework_description) {
+        this.homework_description = homework_description;
     }
 
     public Integer getHomework_id() {
@@ -113,6 +124,7 @@ public class Homework implements Serializable {
                 ", deadline='" + deadline + '\'' +
                 ", homework_path='" + homework_path + '\'' +
                 ", comment_path='" + comment_path + '\'' +
+                ", homework_description='" + homework_description + '\'' +
                 '}';
     }
 }

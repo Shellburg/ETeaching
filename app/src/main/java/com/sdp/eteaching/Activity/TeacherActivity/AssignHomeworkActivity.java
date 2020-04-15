@@ -28,7 +28,7 @@ import java.util.Set;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class AssignHomeworkActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,View.OnClickListener,CompoundButton.OnCheckedChangeListener {
     private int teacherID;
     private ArrayList<Class> classArrayList;
     private Set<Integer> classIDSet=new HashSet<>();
@@ -51,9 +51,9 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         teacherID = (Integer) intent.getExtras().get("t_id");
 
         classArrayList=getAllClass(teacherID);
-
-        //initView();
-        //setListViewAdapter();
+//
+//        initView();
+//        setListViewAdapter();
 
         listView = (ListView)findViewById(R.id.class_info_list_for_homework);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -92,35 +92,35 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-        //listView.setOnItemLongClickListener(this);
+        listView.setOnItemLongClickListener(this);
     }
 
-//    private void initView() {
-//        mListView = (ListView)findViewById(R.id.class_info_list_for_homework);
-//
-//    }
+    private void initView() {
+        mListView = (ListView)findViewById(R.id.class_info_list_for_homework);
 
-//    private void setListViewAdapter() {
-//        mAdapter = new SimpleAdapter(this,putData(),R.layout.class_info_item_for_homework,
-//                new String[]{"班级名称:","班课码:","学校名称:"},new int[]{R.id.class_name_homework,R.id.class_id_homework,R.id.school_name_homework});//listdata和str均可
-//
-//        mListView.setAdapter(mAdapter);
-//
-//    }
-//
-//
-//    public ArrayList<Map<String,String>> putData(){
-//        ArrayList<Map<String,String>> classList=new ArrayList<>();
-//        for(int i=0;i<classArrayList.size();i++) {
-//            Map<String,String> map=new HashMap<>();
-//            map.put("班级名称:","班级名称:"+classArrayList.get(i).getClass_name());
-//            map.put("班课码:", "班课码:"+String.valueOf(classArrayList.get(i).getClass_id()));
-//            map.put("学校名称:","学校名称:"+classArrayList.get(i).getSchool_name());
-//            Log.i("mapinfo",map.get("班级名称:"));
-//            classList.add(map);
-//        }
-//        return  classList;
-//    }
+    }
+
+    private void setListViewAdapter() {
+        mAdapter = new SimpleAdapter(this,putData(),R.layout.class_info_item_for_homework,
+                new String[]{"班级名称:","班课码:","学校名称:"},new int[]{R.id.class_name_homework,R.id.class_id_homework,R.id.school_name_homework});//listdata和str均可
+
+        mListView.setAdapter(mAdapter);
+
+    }
+
+
+    public ArrayList<Map<String,String>> putData(){
+        ArrayList<Map<String,String>> classList=new ArrayList<>();
+        for(int i=0;i<classArrayList.size();i++) {
+            Map<String,String> map=new HashMap<>();
+            map.put("班级名称:","班级名称:"+classArrayList.get(i).getClass_name());
+            map.put("班课码:", "班课码:"+String.valueOf(classArrayList.get(i).getClass_id()));
+            map.put("学校名称:","学校名称:"+classArrayList.get(i).getSchool_name());
+            Log.i("mapinfo",map.get("班级名称:"));
+            classList.add(map);
+        }
+        return  classList;
+    }
 
     public ArrayList<Class> getAllClass(int teacherId) {
         ArrayList<Class> classArrayList = new ArrayList<>();
@@ -142,24 +142,6 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
         return classArrayList;
     }
 
-//    public void jumpToMain(View v) {
-//        jumpTo();
-//    }
-//
-//    public void jumpTo() {
-//
-//        Intent in = new Intent(this, TeacherMainActivity.class);
-//
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putInt("t_id", teacherID);
-//
-//        in.putExtras(bundle);
-//
-//        startActivity(in);
-//
-//    }
-
 
 
     @Override
@@ -175,6 +157,11 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
 //            Toast.makeText(this,list.get(position).getClass_name_homework()+"班",Toast.LENGTH_SHORT).show();
 //        }
 
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return false;
     }
 
 //    @Override
@@ -213,8 +200,10 @@ public class AssignHomeworkActivity extends AppCompatActivity implements Adapter
                         classIdList.add(integer);
                     }
                     bundle.putIntegerArrayList("ClassesID",classIdList);
-
-
+                    bundle.putInt("t_id",teacherID);
+                    Intent intent=new Intent(this,SetHomeworkActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
                 break;
             case R.id.cancel:

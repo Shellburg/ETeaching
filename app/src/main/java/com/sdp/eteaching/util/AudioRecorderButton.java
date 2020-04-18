@@ -239,5 +239,4 @@ public class AudioRecorderButton extends Button implements AudioManager.AudioSta
         }
     }
 
-
 }

@@ -89,7 +89,15 @@ public class TeacherMainActivity extends AppCompatActivity {
     }
 
     public void start_audio(View v){
-        Intent intent=new Intent(this,AudioActivity.class);
+        Intent intent=new Intent(this, TeacherAudioActivity.class);
+        startActivity(intent);
+    }
+
+    public void checkHomework(View v){
+        Intent intent=new Intent(this,CheckHomeworkMainActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putInt("t_id",teacherId);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

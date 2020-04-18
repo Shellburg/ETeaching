@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:id="@+id/my_class"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="班级名称:"
+        />
+    <TextView
+        android:id="@+id/my_teacher_id"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="教师姓名:"
+        android:layout_below="@+id/my_class"
+        />
+    <TextView
+        android:id="@+id/my_homework_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="作业内容:"
+        android:layout_below="@id/my_teacher_id"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/start_time_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="作业布置时间"
+        android:layout_below="@id/my_homework_description"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/deadline_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="作业提交截止时间"
+        android:layout_below="@id/start_time_student"
+        >
+    </TextView>
+
+</RelativeLayout>

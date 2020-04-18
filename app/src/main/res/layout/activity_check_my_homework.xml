@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.TeacherActivity.AssignHomeworkActivity">
+    tools:context=".Activity.StudentActivity.CheckMyHomeworkActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="班级列表"
-        app:layout_constraintBottom_toTopOf="@+id/class_info_list_for_homework"
+        android:text="作业列表"
+        app:layout_constraintBottom_toTopOf="@+id/homework_student"
         tools:layout_editor_absoluteX="-16dp" />
     <ListView
-        android:id="@+id/class_info_list_for_homework"
+        android:id="@+id/homework_student"
         android:layout_width="match_parent"
         android:layout_height="500dp"
 
@@ -25,7 +25,5 @@
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp">
     </ListView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

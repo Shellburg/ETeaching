@@ -32,14 +32,14 @@
         >
     </TextView>
 
-    <CheckBox
-        android:id="@+id/class_checkBox"
-        android:focusable="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/class_name_homework"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="325dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="116dp" />
+<!--    <CheckBox-->
+<!--        android:id="@+id/class_checkBox"-->
+<!--        android:focusable="false"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignTop="@id/class_name_homework"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginLeft="325dp"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_marginRight="116dp" />-->
 </RelativeLayout>

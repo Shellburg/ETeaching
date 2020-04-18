@@ -51,4 +51,12 @@ public class StudentMainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public void checkMyHomework(View view){
+        Intent intent=new Intent(this, CheckMyHomeworkActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("s_id",studentID);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

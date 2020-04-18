@@ -1,11 +1,13 @@
-package com.sdp.eteaching.Activity.TeacherActivity;
+package com.sdp.eteaching.Activity.StudentActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +19,7 @@ import com.sdp.eteaching.util.AudioRecorderButton;
 import com.sdp.eteaching.util.MediaManager;
 import com.sdp.eteaching.util.NetRequest;
 import com.sdp.eteaching.util.PermissionUtils;
-import com.sdp.eteaching.util.RecorderAdaper;
+import com.sdp.eteaching.util.StudentRecorderAdaper;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,8 +33,11 @@ import okhttp3.Request;
 
 import static com.sdp.eteaching.util.AudioManager.verifyAudioPermissions;
 
-public class AudioActivity extends AppCompatActivity {
+public class StudentAudioActivity extends AppCompatActivity {
+    private Integer studentID;
+    private Integer classID;
 
+    private Layout layout;
     private ListView mListView;
     private ArrayAdapter<Recorder> mAdapter;
     private List<Recorder> mDatas =new ArrayList<>();
@@ -47,20 +52,24 @@ public class AudioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio);
+        setContentView(R.layout.student_activity_audio);
 
         initView();
         setListViewAdapter();
 
-        verifyAudioPermissions(AudioActivity.this);
+        Intent intent=getIntent();
+        studentID=(int)intent.getExtras().get("s_id");
+        classID=(int)intent.getExtras().get("homeworkID");
+
+        verifyAudioPermissions(StudentAudioActivity.this);
         MediaRecorder mRecorders = new MediaRecorder();
         mRecorders.setAudioSource(MediaRecorder.AudioSource.MIC);
         PermissionUtils.isGrantExternalRW(this, 1);
 
     }
     private void initView(){
-        mListView = findViewById(R.id.id_listview);
-        mAudioRecorderButton = findViewById(R.id.id_recorder_button);
+        mListView = findViewById(R.id.id_listview_student);
+        mAudioRecorderButton = findViewById(R.id.id_recorder_button_student);
 
         mAudioRecorderButton.setAudioFinishRecorderListener(new AudioRecorderButton.AudioFinishRecorderListener() {
             @Override
@@ -87,7 +96,7 @@ public class AudioActivity extends AppCompatActivity {
     }
 
     private void setListViewAdapter(){
-        mAdapter = new RecorderAdaper(this, mDatas);
+        mAdapter = new StudentRecorderAdaper(this, mDatas);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -199,14 +208,14 @@ public class AudioActivity extends AppCompatActivity {
 //    }
 
 
-    // 使用OkHttp上传文件
+//     //使用OkHttp上传文件
 //    public void uploadFile(File file) {
 //        OkHttpClient client = new OkHttpClient();
 //        MediaType contentType = MediaType.parse("audio/amr"); // 上传文件的Content-Type
 //        RequestBody body = RequestBody.create(contentType, file); // 上传文件的请求体
 //        Log.d("Request",body.toString());
 //        Request request = new Request.Builder()
-//                .url("https://192.168.2.218:10080/uploadAudio/fileUpload") // 上传地址
+//                .url("http://192.168.2.218:10080/uploadAudio/fileUpload") // 上传地址
 //                .post(body)
 //                .build();
 //        Call call = client.newCall(request);
@@ -230,9 +239,11 @@ public class AudioActivity extends AppCompatActivity {
 //    }
 
     public void uploadFile(File file){
-        String url="https://192.168.2.218:10080/uploadAudio/fileUpload/";
+        String url="http://192.168.2.218:10080/uploadAudio/filesUpload/";
         List<File> list= new ArrayList<>();
         Map<String,String> params=new HashMap<>();
+        params.put("s_id", String.valueOf(studentID));
+        params.put("class_id", String.valueOf(classID));
             list.add(file);
         NetRequest.DataCallBack callback=new NetRequest.DataCallBack() {
             @Override
@@ -245,7 +256,7 @@ public class AudioActivity extends AppCompatActivity {
 
             }
         };
-        list.add(file);
+        //list.add(file);
         netRequest.audioFileRequest(context,url,params,"audio",list,callback);
     }
 }

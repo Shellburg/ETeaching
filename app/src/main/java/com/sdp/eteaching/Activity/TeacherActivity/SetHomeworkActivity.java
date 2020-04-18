@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SetHomeworkActivity extends AppCompatActivity {
     private ArrayList<Integer> classIdArray;
+    private Integer classID;
     private int teacherID;
     private String homeworkDescription,deadline;
     private EditText homework_description,e_deadline;
@@ -26,9 +27,11 @@ public class SetHomeworkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_homework);
         Intent intent=getIntent();
-        classIdArray=intent.getIntegerArrayListExtra("ClassesID");
-        teacherID=(int)intent.getExtras().get("t_id");
+        //classIdArray=intent.getIntegerArrayListExtra("ClassesID");
 
+
+        classID=(int)intent.getExtras().get("classID");
+        teacherID=(int)intent.getExtras().get("t_id");
         homework_description=(EditText)findViewById(R.id.homework_description);
         e_deadline=(EditText)findViewById(R.id.deadline);
     }
@@ -47,7 +50,7 @@ public class SetHomeworkActivity extends AppCompatActivity {
 
 ////补全信息
 
-            String param = "?teacher_id="+teacherID+"&class_id="+classIdArray+"&homework_description="+homeworkDescription+"&deadline="+deadline;
+            String param = "?teacher_id="+teacherID+"&class_id="+classID+"&homework_description="+homeworkDescription+"&deadline="+deadline;
 
             String path = "teacher/assignHomework.do";
 

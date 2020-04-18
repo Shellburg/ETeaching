@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.TeacherActivity.SetHomeworkActivity"></activity>
+        <activity android:name=".Activity.TeacherActivity.CheckTheAudioHomeworkActivity"></activity>
+        <activity android:name=".Activity.TeacherActivity.CheckHomeworkMainActivity" />
+        <activity android:name=".Activity.StudentActivity.CheckMyHomeworkActivity" />
+        <activity android:name=".Activity.TeacherActivity.SetHomeworkActivity" />
         <activity android:name=".Activity.TeacherActivity.AssignHomeworkActivity" />
         <activity android:name=".Activity.TeacherActivity.StudentInfoActivity" />
         <activity android:name=".Activity.TeacherActivity.CheckAllStudentsActivity" />
-        <activity android:name=".Activity.TeacherActivity.AudioActivity" />
+        <activity android:name=".Activity.TeacherActivity.TeacherAudioActivity" />
+        <activity android:name=".Activity.StudentActivity.StudentAudioActivity" />
         <activity android:name=".Activity.TeacherActivity.CheckClassInfoActivity" />
         <activity android:name=".Activity.TeacherActivity.ShowClassIdActivity" />
         <activity android:name=".Activity.StudentActivity.JoinInClassActivity" />

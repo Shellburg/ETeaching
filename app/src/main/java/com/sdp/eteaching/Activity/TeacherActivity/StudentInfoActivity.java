@@ -2,6 +2,7 @@ package com.sdp.eteaching.Activity.TeacherActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.sdp.eteaching.R;
 
@@ -19,5 +20,11 @@ public class StudentInfoActivity extends AppCompatActivity {
         Intent intent=getIntent();
         studentID= (int) intent.getExtras().get("studentID");
         teacherID=(int)intent.getExtras().get("teacherID");
+
+
+    }
+
+    public void checkHomework(View view){
+
     }
 }

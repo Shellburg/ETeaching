@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.TeacherActivity.AudioActivity">
+    tools:context=".Activity.StudentActivity.StudentAudioActivity">
 
     <com.sdp.eteaching.util.AudioRecorderButton
-        android:id="@+id/id_recorder_button"
+        android:id="@+id/id_recorder_button_student"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:background="@drawable/btn_recorder_normal"
@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteX="65dp" />
 
     <ListView
-        android:id="@+id/id_listview"
+        android:id="@+id/id_listview_student"
         android:layout_width="match_parent"
         android:layout_height="470dp"
         android:layout_weight="3"

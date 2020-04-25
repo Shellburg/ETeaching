@@ -21,7 +21,8 @@ public class HttpPostUtil {
 
             System.out.println("要发送的信息"+content);
 
-            String address = "http://192.168.2.218:10080/"+path+content;
+            //String address = "http://192.168.2.218:10080/"+path+content;
+            String address = "http://120.26.77.81/"+path+content;
 
             URL url = new URL(address);
 
@@ -82,6 +83,10 @@ public class HttpPostUtil {
         }
 
         return null;
+
+    }
+
+    public void download(){
 
     }
 

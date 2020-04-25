@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.sdp.eteaching.Activity.StudentActivity.StudentAudioActivity;
+import com.sdp.eteaching.Activity.TeacherActivity.CheckTheAudioHomeworkActivity;
 import com.sdp.eteaching.R;
 
 import java.util.List;
@@ -17,19 +17,14 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- *list的adapter
- */
-
-public class StudentRecorderAdaper extends ArrayAdapter<StudentAudioActivity.Recorder> {
-
+public class CheckHomeworkAdapter extends ArrayAdapter<CheckTheAudioHomeworkActivity.Recorder>{
     //item 最小最大值
     private int mMinItemWidth;
     private int mMaxIItemWidth;
 
     private LayoutInflater mInflater;
 
-    public StudentRecorderAdaper(@NonNull Context context, List<StudentAudioActivity.Recorder> datas) {
+    public CheckHomeworkAdapter(@NonNull Context context, List<CheckTheAudioHomeworkActivity.Recorder> datas) {
         super(context,-1, datas);
         mInflater = LayoutInflater.from(context);
 
@@ -49,7 +44,7 @@ public class StudentRecorderAdaper extends ArrayAdapter<StudentAudioActivity.Rec
 
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item_recorder, parent, false);
+            convertView = mInflater.inflate(R.layout.item_audiohomework, parent, false);
             holder = new ViewHolder();
             holder.seconds = convertView.findViewById(R.id.id_recorder_time);
             holder.length = convertView.findViewById(R.id.id_recorder_length);
@@ -58,7 +53,7 @@ public class StudentRecorderAdaper extends ArrayAdapter<StudentAudioActivity.Rec
             holder = (ViewHolder) convertView.getTag();
         }
         //设置时间  matt.round 四舍五入
-        holder.seconds.setText(Math.round(getItem(position).getTime())+"\"");
+        //holder.seconds.setText(Math.round(getItem(position).getTime())+"\"");
         //设置背景的宽度
         ViewGroup.LayoutParams lp = holder.length.getLayoutParams();
         //getItem(position).time

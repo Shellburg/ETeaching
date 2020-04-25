@@ -17,7 +17,7 @@ import com.sdp.eteaching.util.AudioRecorderButton;
 import com.sdp.eteaching.util.MediaManager;
 import com.sdp.eteaching.util.NetRequest;
 import com.sdp.eteaching.util.PermissionUtils;
-import com.sdp.eteaching.util.TeacherRecoderAdapter;
+import com.sdp.eteaching.util.TeacherRecorderAdapter;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +78,7 @@ public class TeacherAudioActivity extends AppCompatActivity {
 
                 //上传文件
                 uploadFile(new File(filePath));
-                Log.d("AudiotoUpload",filePath.toString());
+                Log.d("Audio to Upload",filePath.toString());
 
                 //设置listview 位置
                 mListView.setSelection(mDatas.size()-1);
@@ -87,7 +87,7 @@ public class TeacherAudioActivity extends AppCompatActivity {
     }
 
     private void setListViewAdapter(){
-        mAdapter = new TeacherRecoderAdapter(this, mDatas);
+        mAdapter = new TeacherRecorderAdapter(this, mDatas);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

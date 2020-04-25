@@ -6,7 +6,7 @@ import android.media.MediaPlayer;
 import java.io.IOException;
 
 /**
- * Created by Administrator on 2017/11/28.
+ * Created by Administrator
  * 播放录音类
  */
 

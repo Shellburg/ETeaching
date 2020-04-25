@@ -19,7 +19,7 @@ import com.sdp.eteaching.util.AudioRecorderButton;
 import com.sdp.eteaching.util.MediaManager;
 import com.sdp.eteaching.util.NetRequest;
 import com.sdp.eteaching.util.PermissionUtils;
-import com.sdp.eteaching.util.StudentRecorderAdaper;
+import com.sdp.eteaching.util.StudentRecorderAdapter;
 
 import java.io.File;
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class StudentAudioActivity extends AppCompatActivity {
     }
 
     private void setListViewAdapter(){
-        mAdapter = new StudentRecorderAdaper(this, mDatas);
+        mAdapter = new StudentRecorderAdapter(this, mDatas);
         mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -239,7 +239,7 @@ public class StudentAudioActivity extends AppCompatActivity {
 //    }
 
     public void uploadFile(File file){
-        String url="http://192.168.2.218:10080/uploadAudio/filesUpload/";
+        String url="http://120.26.77.81/uploadAudio/filesUpload/";
         List<File> list= new ArrayList<>();
         Map<String,String> params=new HashMap<>();
         params.put("s_id", String.valueOf(studentID));
